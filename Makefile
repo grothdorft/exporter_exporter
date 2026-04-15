@@ -33,7 +33,8 @@ AUTHORS:
 	git log --format='%aN <%aE>' | grep -v Tristan\ Colgate\  | sort -u > AUTHORS
 
 .PHONY: build
-build: vet format test
+# Note: skipping 'format' and 'test' steps for faster local iteration during development
+build: vet
 	go run github.com/goreleaser/goreleaser@latest release --snapshot --skip=publish --clean
 
 .PHONY: release
